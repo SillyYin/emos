@@ -19,7 +19,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://115.159.208.98:3306?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://115.159.208.98:3306/emos?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
       username: root
       password: ENC(t88H6tXE2P231j41zOxrqimEpQ5EVIasSWG/YzShxf/PlfIuQQV1Bes3P0IHSQ/A)
       initial-size: 8
@@ -47,3 +47,16 @@ spring:
       authentication-database: admin
       username: root
       password: ENC(t88H6tXE2P231j41zOxrqimEpQ5EVIasSWG/YzShxf/PlfIuQQV1Bes3P0IHSQ/A)
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.yinrj.emos.wx.db.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    root: info
+    com.example.emos.wx.db.dao : warn
+  pattern:
+    console: "%d{HH:mm:ss}  %-5level  %msg%n"

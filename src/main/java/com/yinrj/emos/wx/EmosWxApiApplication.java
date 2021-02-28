@@ -1,4 +1,4 @@
-package com.yinrj.emoswxapi;
+package com.yinrj.emos.wx;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

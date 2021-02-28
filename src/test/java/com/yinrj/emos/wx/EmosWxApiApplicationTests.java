@@ -1,4 +1,4 @@
-package com.yinrj.emoswxapi;
+package com.yinrj.emos.wx;
 
 import org.jasypt.encryption.StringEncryptor;
 import org.junit.jupiter.api.Test;
