@@ -1,11 +1,12 @@
 package com.yinrj.emos.wx.controller;
 
 import com.yinrj.emos.wx.common.util.R;
+import com.yinrj.emos.wx.dto.SayHelloDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @author yinrongjie
@@ -18,8 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Api("测试web接口")
 public class TestController {
     @ApiOperation("测试")
-    @GetMapping("/test")
-    public R sayHello() {
-        return R.ok().put("message", "HelloWorld");
+    @PostMapping("/test")
+    public R sayHello(@Valid @RequestBody SayHelloDto sayHelloDto) {
+        return R.ok().put("message", "Hello, " + sayHelloDto.getName());
     }
 }
