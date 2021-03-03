@@ -9,11 +9,6 @@ server:
   servlet:
     context-path: /emos-wx-api
 
-
-jasypt:
-  encryptor:
-    password: Y6M9fAJQdU7jNC5MW
-
 spring:
   profiles:
     active: dev
@@ -23,7 +18,7 @@ spring:
       driver-class-name: com.mysql.jdbc.Driver
       url: jdbc:mysql://115.159.208.98:3306/emos?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
       username: root
-      password: ENC(t88H6tXE2P231j41zOxrqimEpQ5EVIasSWG/YzShxf/PlfIuQQV1Bes3P0IHSQ/A)
+      password: c5c+jcYPB+Yd7CbpKBCQeqOMWO1K17bhM2RxFVxfaRemrVO0ks5bDYv0xblIXuf7P74eYE+SYXrOsDSV04LyAA==
       initial-size: 8
       max-active: 16
       min-idle: 8
@@ -31,6 +26,10 @@ spring:
       test-while-idle: true
       test-on-borrow: false
       test-on-return: false
+      filters: config
+      connect-properties:
+        config.decrypt: true
+        config.decrypt.key: ${spring.datasource.druid.pulicKey}
   redis:
     database: 0
     host: 115.159.208.98
