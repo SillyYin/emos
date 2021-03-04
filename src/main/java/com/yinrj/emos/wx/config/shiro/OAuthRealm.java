@@ -9,6 +9,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * @author yinrongjie
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @description 定义shiro框架的认证和授权方法
  * @date 2021/3/2
  */
+@Component
 public class OAuthRealm extends AuthorizingRealm {
     @Autowired
     private JwtUtil jwtUtil;
