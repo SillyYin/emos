@@ -1,6 +1,5 @@
 package com.yinrj.emos.wx.config.shiro;
 
-import cn.hutool.core.date.DateUnit;
 import cn.hutool.core.date.DateUtil;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
