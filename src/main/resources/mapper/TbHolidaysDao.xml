@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yinrj.emos.wx.db.dao.TbHolidaysDao">
+  <insert id="insertData" parameterType="Date">
+    insert into tb_holidays set date = #{date};
+  </insert>
+
+  <delete id="deleteData">
+    truncate table tb_holidays;
+  </delete>
+
+  <select id="selectOneData" resultType="Date">
+    select `date` from tb_holidays limit 1;
+  </select>
 </mapper>

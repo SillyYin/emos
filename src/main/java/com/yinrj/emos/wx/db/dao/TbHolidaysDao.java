@@ -1,8 +1,14 @@
 package com.yinrj.emos.wx.db.dao;
 
-import com.yinrj.emos.wx.db.entity.TbHolidays;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.Date;
 
 @Mapper
 public interface TbHolidaysDao {
+    int insertData(Date date);
+
+    void deleteData();
+
+    Date selectOneData();
 }
