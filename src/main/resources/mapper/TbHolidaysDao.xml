@@ -12,4 +12,8 @@
   <select id="selectOneData" resultType="Date">
     select `date` from tb_holidays limit 1;
   </select>
+
+  <select id="searchTodayIsHoliday" resultType="Integer">
+    select id from tb_holidays where date = CURRENT_DATE limit 1;
+  </select>
 </mapper>

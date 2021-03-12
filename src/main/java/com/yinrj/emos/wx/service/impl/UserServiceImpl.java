@@ -5,6 +5,7 @@ import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.yinrj.emos.wx.db.dao.TbUserDao;
+import com.yinrj.emos.wx.db.entity.TbUser;
 import com.yinrj.emos.wx.exception.EmosException;
 import com.yinrj.emos.wx.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -96,5 +97,10 @@ public class UserServiceImpl implements UserService {
         }
         // TODO 从消息队列中获得消息
         return id;
+    }
+
+    @Override
+    public TbUser searchById(int userId) {
+        return userDao.searchById(userId);
     }
 }

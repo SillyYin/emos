@@ -11,4 +11,6 @@ public interface TbHolidaysDao {
     void deleteData();
 
     Date selectOneData();
+
+    Integer searchTodayIsHoliday();
 }

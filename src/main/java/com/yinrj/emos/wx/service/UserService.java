@@ -1,5 +1,7 @@
 package com.yinrj.emos.wx.service;
 
+import com.yinrj.emos.wx.db.entity.TbUser;
+
 import java.util.Set;
 
 /**
@@ -14,4 +16,6 @@ public interface UserService {
     Set<String> searchUserPermission(int userId);
 
     Integer login(String code);
+
+    TbUser searchById(int userId);
 }
