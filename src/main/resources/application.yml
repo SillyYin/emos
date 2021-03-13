@@ -53,7 +53,7 @@ mybatis:
 
 logging:
   level:
-    root: debug
+    root: info
     com.example.emos.wx.db.dao : warn
 
 emos:

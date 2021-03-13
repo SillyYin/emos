@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
 /**
@@ -42,12 +43,12 @@ public class CheckinServiceImpl implements CheckinService {
             return "节假日不需要考勤";
         }
 
-        String start = LocalDate.now().toString() + contant.attendanceStartTime;
-        String end = LocalDate.now().toString() + contant.attendanceEndTime;
+        String start = LocalDate.now().toString() + " " + contant.attendanceStartTime;
+        String end = LocalDate.now().toString() + " " + contant.attendanceEndTime;
         LocalDateTime now = LocalDateTime.now();
-        LocalDateTime startTime = LocalDateTime.parse(start);
-        LocalDateTime endTime = LocalDateTime.parse(end);
-        log.debug("now: {}; startTime: {}; endTime: {}", now, startTime, endTime);
+        LocalDateTime startTime = LocalDateTime.parse(start, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        LocalDateTime endTime = LocalDateTime.parse(end, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        log.info("now: {}; startTime: {}; endTime: {}", now, startTime, endTime);
         if (now.isBefore(startTime)) {
             return "没有到上班考勤开始时间";
         } else if (now.isAfter(endTime)) {

@@ -2,7 +2,7 @@ package com.yinrj.emos.wx.config.exception;
 
 import com.yinrj.emos.wx.exception.EmosException;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.authz.UnauthenticatedException;
+import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -32,7 +32,7 @@ public class ExceptionAdvice {
         } else if (e instanceof EmosException) {
             EmosException exception = (EmosException) e;
             return exception.getMessage();
-        } else if (e instanceof UnauthenticatedException){
+        } else if (e instanceof UnauthorizedException){
             return "不具备相关权限";
         } else {
             return "内部异常";
