@@ -1,10 +1,11 @@
 package com.yinrj.emos.wx.db.entity;
 
-import java.io.Serializable;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
- * sys_config
+ * tb_dept
  * @author 
  */
 @Data
@@ -15,24 +16,9 @@ public class TbDept implements Serializable {
     private Integer id;
 
     /**
-     * 参数名
+     * 部门名称
      */
-    private String paramKey;
-
-    /**
-     * 参数值
-     */
-    private String paramValue;
-
-    /**
-     * 状态
-     */
-    private Boolean status;
-
-    /**
-     * 备注
-     */
-    private String remark;
+    private String deptName;
 
     private static final long serialVersionUID = 1L;
 }

@@ -19,6 +19,8 @@ class EmosWxApiApplicationTests {
         String appSecret = "f50e467f99d72150519ef2a3ca4c5508";
         System.out.println("appId: " + encryptor.encrypt(appId));
         System.out.println("appSecret: " + encryptor.encrypt(appSecret));
+
+        System.out.println("pass: " + encryptor.encrypt("yrj960208"));
     }
 
 }

@@ -5,4 +5,30 @@
         select id from tb_checkin where user_id = #{userId} and date = CURRENT_DATE and
                                         create_time between #{start} and #{end} limit 1;
     </select>
+
+    <insert id="insert" parameterType="com.yinrj.emos.wx.db.entity.TbCheckin">
+        INSERT INTO tb_checkin
+        SET user_id = #{userId},
+        <if test="address!=null">
+            address = #{address},
+        </if>
+        <if test="country!=null">
+            country = #{country},
+        </if>
+        <if test="province!=null">
+            province = #{province},
+        </if>
+        <if test="city!=null">
+            city = #{city},
+        </if>
+        <if test="district!=null">
+            district = #{district},
+        </if>
+        status = #{status},
+        <if test="risk!=null">
+            risk = #{risk},
+        </if>
+        date = current_date,
+        create_time = current_timestamp
+    </insert>
 </mapper>

@@ -59,5 +59,9 @@
         FROM tb_user WHERE id=#{userId} AND status = 1
     </select>
 
+    <select id="searchNameAndDept" parameterType="int" resultType="HashMap">
+        select u.name, d.dept_name from tb_user u left join tb_dept d on u.dept_id = d.id where u.id = #{userId} and u.status = 1;
+    </select>
+
 
 </mapper>

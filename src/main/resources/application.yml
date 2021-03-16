@@ -44,6 +44,12 @@ spring:
       authentication-database: admin
       username: root
       password: ENC(lIjSYL9Ku2TTN0XhTvK06+22gnQju33yMRhRVY/+DpRN1ujOKKVGiMJzs87+TmQZ)
+
+  mail:
+    default-encoding: UTF-8
+    host: smtp.163.com
+    username: y_rongjie@163.com
+    password: ENC(/YU75sSoJpC9PS51ITELwJVtvVxaJX1Mk+K+VIQGqIqxz2c8yH9n5kBQ0RJmVXqa)
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
   type-aliases-package: com.yinrj.emos.wx.db.entity
@@ -62,6 +68,12 @@ emos:
     # 过期时间（天）
     expire: 5
     cache-expire: 10
+  face:
+    createFaceModelUrl: http://115.159.208.98:3000/create_face_model
+    checkinUrl: http://115.159.208.98:3000/checkin
+  email:
+    hr: yin_rj@qq.com
+    system: yin_rongjie@163.com
 
 weixin:
   app-id: ENC(I4X8lwkKvuVpJ0vYhfyWi0jPIdvw5wmUb0nU7vC/VlQXoYir3BrjilcMwZ6cF9mvUVdCiPtUENRK4y/iO0tOKQ==)
