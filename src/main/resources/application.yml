@@ -57,10 +57,6 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
 
-logging:
-  level:
-    root: info
-    com.example.emos.wx.db.dao : warn
 
 emos:
   jwt:
@@ -74,6 +70,8 @@ emos:
   email:
     hr: yin_rj@qq.com
     system: yin_rongjie@163.com
+  image-folder: /Users/yinrongjie/Desktop/file
+  code: 820F7C51A314EFEA
 
 weixin:
   app-id: ENC(I4X8lwkKvuVpJ0vYhfyWi0jPIdvw5wmUb0nU7vC/VlQXoYir3BrjilcMwZ6cF9mvUVdCiPtUENRK4y/iO0tOKQ==)

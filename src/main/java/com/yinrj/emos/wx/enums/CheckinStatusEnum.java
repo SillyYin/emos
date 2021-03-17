@@ -19,5 +19,7 @@ public enum CheckinStatusEnum {
 
 
     CheckinStatusEnum(int code, String msg) {
+        this.code = code;
+        this.msg = msg;
     }
 }

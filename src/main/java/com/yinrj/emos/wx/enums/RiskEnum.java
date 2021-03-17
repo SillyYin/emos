@@ -14,5 +14,7 @@ public enum RiskEnum {
     public int code;
     public String msg;
     RiskEnum(int code, String msg) {
+        this.code = code;
+        this.msg = msg;
     }
 }

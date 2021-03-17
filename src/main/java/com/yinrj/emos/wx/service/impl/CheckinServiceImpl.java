@@ -8,6 +8,7 @@ import cn.hutool.http.HttpUtil;
 import com.yinrj.emos.wx.constant.SystemContant;
 import com.yinrj.emos.wx.db.dao.*;
 import com.yinrj.emos.wx.db.entity.TbCheckin;
+import com.yinrj.emos.wx.db.entity.TbFaceModel;
 import com.yinrj.emos.wx.enums.CheckinStatusEnum;
 import com.yinrj.emos.wx.enums.RiskEnum;
 import com.yinrj.emos.wx.exception.EmosException;
@@ -46,6 +47,9 @@ public class CheckinServiceImpl implements CheckinService {
 
     @Value("${emos.email.hr}")
     private String hrEmail;
+
+    @Value("${emos.code}")
+    private String code;
 
     private final EmailTask emailTask;
 
@@ -106,6 +110,7 @@ public class CheckinServiceImpl implements CheckinService {
             String path = (String) map.get("path");
             HttpRequest request = HttpUtil.createPost(checkinUrl);
             request.form("photo", FileUtil.file(path), "targetModel", faceModel);
+            request.form("code", code);
             HttpResponse response = request.execute();
             if (response.getStatus() != 200) {
                 log.error("人脸识别服务异常");
@@ -124,7 +129,7 @@ public class CheckinServiceImpl implements CheckinService {
                 if (!StrUtil.isBlank(city) && !StrUtil.isBlank(district)) {
                     String cityCode = cityDao.searchByCityName(city);
                     try {
-                        String url = "hhtp://m." + cityCode + ".bendibao.com/news/yqdengji/?qu=" + district;
+                        String url = "http://m." + cityCode + ".bendibao.com/news/yqdengji/?qu=" + district;
                         Document document = Jsoup.connect(url).get();
                         Elements elements = document.getElementsByClass("list-content");
                         if (elements.size() > 0) {
@@ -162,8 +167,26 @@ public class CheckinServiceImpl implements CheckinService {
                 entity.setProvince(province);
                 entity.setDistrict(district);
                 entity.setStatus((byte) status);
+                entity.setRisk(risk);
                 checkinDao.insert(entity);
             }
+        }
+    }
+
+    @Override
+    public void createFaceModel(int userId, String path) {
+        HttpRequest request = HttpUtil.createPost(createFaceModelUrl);
+        request.form("photo", FileUtil.file(path));
+        request.form("code", code);
+        HttpResponse response = request.execute();
+        String body = response.body();
+        if ("无法识别出人脸".equals(body) || "照片中存在多张人脸".equals(body)) {
+            throw new EmosException(body);
+        } else {
+            TbFaceModel entity = new TbFaceModel();
+            entity.setUserId(userId);
+            entity.setFaceModel(body);
+            faceModelDao.insert(entity);
         }
     }
 
