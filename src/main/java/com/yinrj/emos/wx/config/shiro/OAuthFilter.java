@@ -95,6 +95,7 @@ public class OAuthFilter extends AuthenticatingFilter {
                 int userId = jwtUtil.getUserId(token);
                 token = jwtUtil.createToken(userId);
                 redisTemplate.opsForValue().set(token, userId + "", cacheExpire, TimeUnit.DAYS);
+                localToken.setToken(token);
             } else {
                 response.setStatus(HttpStatus.SC_UNAUTHORIZED);
                 response.getWriter().println("令牌已过期");
